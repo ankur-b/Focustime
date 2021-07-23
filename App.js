@@ -1,40 +1,21 @@
-import React from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
-
-
+import React, {useState} from 'react';
+import {StyleSheet, Text, View} from 'react-native';
+import {Focus} from './src/features/focus/Focus';
+import Timer from './src/features/timer/Timer';
 const App = () => {
+  const [focusSubject, setFocusSubject] = useState('gardening');
   return (
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic">
-        <View>
-        <Text>Hello World</Text>
-        </View>
-      </ScrollView>
+    <View style={styles.container}>
+      {focusSubject ? <Timer focusSubject={focusSubject}/> : <Focus addSubject={setFocusSubject} />}
+      <Text>{focusSubject}</Text>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
+  container: {
+    flex: 1,
+    backgroundColor: '#999999',
   },
 });
 
